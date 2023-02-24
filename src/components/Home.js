@@ -8,6 +8,7 @@ function Home(props) {
   const [passwordRectificationCount, setPasswordRectificationCount] =
     useState("");
   const   [DBdata, setDBdata] = useState([]);
+  const url = "http://ec2-15-206-165-96.ap-south-1.compute.amazonaws.com:3011/";
 
   useEffect(() => {
     var requestOptions = {
@@ -15,7 +16,7 @@ function Home(props) {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3005/api/v1/strong-password/", requestOptions)
+    fetch(url + "api/v1/strong-password/", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
@@ -77,7 +78,7 @@ function Home(props) {
         };
     
         fetch(
-          "http://localhost:3005/api/v1/strong-password/validate",
+          url + "api/v1/strong-password/validate",
           requestOptions
         )
           .then((response) => response.json())
