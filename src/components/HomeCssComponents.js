@@ -14,6 +14,7 @@ export const buttonStyle = {
   border: "none",
   borderRadius: "5px",
   boxShadow: "0px 4px 12px 0px #abddbf",
+  margin: "5px"
 };
 export const flexContainer = {
   display: "flex",
