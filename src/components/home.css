@@ -1,3 +1,8 @@
-*{
-    color: rgb(153,0,18);
+body{
+    background-image: linear-gradient(to right top, #d0efdb, #d9f2e1, #e2f5e7, #ebf8ed, #f3fbf4, #f1fbf5, #f0faf7, #effaf8, #e3f6f9, #dbf1fd, #dbeaff, #e3e1fe); 
 }
+
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+} 

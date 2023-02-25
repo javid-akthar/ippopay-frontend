@@ -3,10 +3,10 @@ import Navbar from "./Navbar";
 import ProblemStatement from "./ProblemStatement";
 import ResultTable from "./ResultTable";
 import "./home.css";
+import { inputArea, buttonStyle, flexContainer } from "./HomeCssComponents";
 
 function Home(props) {
   const [inputValue, setInputValue] = useState("");
-  const [message, setMessage] = useState("");
   const [passwordRectificationCount, setPasswordRectificationCount] =
     useState("");
   const [DBdata, setDBdata] = useState([]);
@@ -21,31 +21,12 @@ function Home(props) {
     fetch(url + "api/v1/strong-password/", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setDBdata(result);
       })
       .catch((error) => console.log("error", error));
   }, []);
 
-  let inputArea = {
-    width: "400px",
-    display: "inline-block",
-  };
-  let buttonStyle = {
-    display: "inline-block",
-    height: "39px",
-    alignSelf: "center",
-  };
-  let flexContainer = {
-    display: "flex",
-    margin: "auto",
-    width: "80%",
-    justifyContent: "space-around",
-    // position: "sticky",
-    // top: "10px"
-  };
   let val = (e) => {
-    console.log(e.target.value);
     setInputValue(e.target.value);
   };
   let execute = () => {
@@ -68,8 +49,6 @@ function Home(props) {
       } else {
         setPasswordRectificationCount("");
       }
-      // console.log('tab index',inputValue.indexOf('\t'));
-      console.log("inputValue", inputValue);
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
@@ -87,7 +66,6 @@ function Home(props) {
       fetch(url + "api/v1/strong-password/validate", requestOptions)
         .then((response) => response.json())
         .then((response) => {
-          console.log(response);
           setPasswordRectificationCount(response.count);
           setDBdata(response.data);
         })
@@ -101,10 +79,8 @@ function Home(props) {
       <Navbar />
       <br></br>
       <ProblemStatement />
-      {console.log("home componenet")}
       <br></br>
       <br></br>
-      <h3>{message}</h3>
       <div style={flexContainer}>
         <div>
           <h4 style={{ textAlign: "center" }}>Input</h4>
@@ -116,12 +92,7 @@ function Home(props) {
             onChange={val}
           ></textarea>
         </div>
-        <button
-          type="button"
-          className="btn btn-primary"
-          style={buttonStyle}
-          onClick={execute}
-        >
+        <button type="button" style={buttonStyle} onClick={execute}>
           {" "}
           Run{" "}
         </button>

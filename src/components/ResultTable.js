@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
+import {tableStyle} from './ResultTableCssComponent'
 
 function ResultTable(props) {
   
-  let tableStyle = {
-    width : "80%",
-    margin: "auto"
-  }
-  console.log('DBRecord',props.DBdata);
   let ele = "";
   if(props.DBdata)
    ele = props.DBdata.map( (item, index) =>{
